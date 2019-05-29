@@ -14,7 +14,10 @@ export class NewToDo extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
+        this.props.createTodoHandler(this.state);
+        this.setState({
+            task: ''
+        });
     }
 
     render() {

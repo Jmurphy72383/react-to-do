@@ -11,13 +11,19 @@ export class TodoList extends Component {
         ]
     };
 
+    createTodoHandler = (newTodo) => {
+        this.setState({
+            todos: [...this.state.todos, newTodo]
+        });
+    }
+
 
     render() {
         let items = this.state.todos.map(todo => <Todo task={todo.task}/>)
         return (
             <div>
                 <h1>Todo List!</h1>
-                <NewToDo />
+                <NewToDo createTodo={this.createTodoHandler}/>
                 <ul>
                     {items}
                 </ul>
