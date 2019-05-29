@@ -12,19 +12,26 @@ export class NewToDo extends Component {
         });
     }
 
+    handleSubmit = e => {
+        e.preventDefault();
+
+    }
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor='task'>New Todo</label>
                     <input 
                         type='text' 
+                        name='task'
                         placeholder='New Todo' 
                         id='task' 
-                        value='this.state.task'
+                        value={this.state.task}
                         onChange={this.handleChange}
                     >
                     </input>
+                    <button>Add Todo</button>
                 </form>
             </div>
         )
