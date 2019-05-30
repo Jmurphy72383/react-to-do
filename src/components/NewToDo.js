@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
+import './NewToDo.css';
 
 export class NewToDo extends Component {
     // constructor(props) {
@@ -20,7 +21,7 @@ export class NewToDo extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.createTodo({...this.state, id: uuid()});
+        this.props.createTodo({...this.state, id: uuid(), completed: false});
         this.setState({
             task: ''
         });
@@ -29,7 +30,7 @@ export class NewToDo extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className="NewTodoForm" onSubmit={this.handleSubmit}>
                     <label htmlFor='task'>New Todo</label>
                     <input 
                         type='text' 
