@@ -20,9 +20,28 @@ export class TodoList extends Component {
         });
     }
 
+    updateTodo = (id, updatedTodo) => {
+        const updatedItem = this.state.todos.map(todo => {
+            if(todo.id === id) {
+                return { ...todo, task: updatedTodo };
+            }
+            return todo;
+        });
+        this.setState({
+            todos: updatedItem
+        });
+    }
+
 
     render() {
-        let items = this.state.todos.map(todo => <Todo key={todo.id} id={todo.id} task={todo.task} deleteTodo={this.removeTodoHandler}/>)
+        let items = this.state.todos.map(todo => 
+        <Todo 
+            key={todo.id} 
+            id={todo.id} 
+            task={todo.task} 
+            deleteTodo={this.removeTodoHandler}
+            updateTodo={this.updateTodo}
+            />)
         return (
             <div>
                 <h1>Todo List!</h1>

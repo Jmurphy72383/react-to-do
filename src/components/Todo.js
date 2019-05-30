@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 export class Todo extends Component {
 
     state = {
-        showEdit: false
+        showEdit: false,
+        task: this.props.task
     };
 
     handleDelete = () => {
@@ -16,6 +17,20 @@ export class Todo extends Component {
         });
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value 
+        });
+    }
+
+    submitEdit = (e) => {
+        e.preventDefault();
+        this.props.updateTodo(this.props.id, this.state.task);
+        this.setState({
+            showEdit: false
+        });
+    }
+
 
     render() {
         //Shows edit input if the edit todo button is clicked. Else, shows the todo list item
@@ -23,8 +38,9 @@ export class Todo extends Component {
         if(this.state.showEdit) {
             edit = (
                 <div>
-                    <form>
-                        <input type="text"></input>
+                    <form onSubmit={this.submitEdit}>
+                        <input type="text" name='task' value={this.state.task} onChange={this.handleChange}></input>
+                        <button>Save</button>
                     </form>
                 </div>
             )
