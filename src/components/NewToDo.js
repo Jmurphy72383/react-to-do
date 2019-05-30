@@ -29,8 +29,8 @@ export class NewToDo extends Component {
 
     render() {
         return (
-            <div>
-                <form className="NewTodoForm" onSubmit={this.handleSubmit}>
+            
+                <form className="NewToDoForm" onSubmit={this.handleSubmit}>
                     <label htmlFor='task'>New Todo</label>
                     <input 
                         type='text' 
@@ -43,7 +43,7 @@ export class NewToDo extends Component {
                     </input>
                     <button>Add Todo</button>
                 </form>
-            </div>
+            
         )
     }
 }
